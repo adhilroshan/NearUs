@@ -47,16 +47,17 @@ export default function signin({ userIdCookie }) {
     const handleVerifyEmail = async (event) => {
         event.preventDefault();
         const response = await fetch(
-            `${process.env.NEXT_PUBLIC_API_URL}/user/signin`,
-            {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    email: email,
-                }),
-            }
+          `${process.env.NEXT_PUBLIC_API_URL}/user/signin`,
+          {
+            method: "POST",
+            mode: "cors",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              email: email,
+            }),
+          }
         );
         const data = await response.json();
         if (response.status === 200) {
@@ -85,17 +86,18 @@ export default function signin({ userIdCookie }) {
     const handleSubmit = async (event) => {
         event.preventDefault();
         const response = await fetch(
-            `${process.env.NEXT_PUBLIC_API_URL}/user/signin/verify`,
-            {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    email: email,
-                    otp: otp,
-                }),
-            }
+          `${process.env.NEXT_PUBLIC_API_URL}/user/signin/verify`,
+          {
+            method: "POST",
+            mode: "cors",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              email: email,
+              otp: otp,
+            }),
+          }
         );
         const data = await response.json();
         if (response.status === 200) {

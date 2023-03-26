@@ -52,16 +52,17 @@ export default function signup({ userIdCookie }) {
     const handleVerifyEmail = async (event) => {
         event.preventDefault();
         const response = await fetch(
-            `${process.env.NEXT_PUBLIC_API_URL}/user/signup`,
-            {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    email: email,
-                }),
-            }
+          `${process.env.NEXT_PUBLIC_API_URL}/user/signup`,
+          {
+            method: "POST",
+            mode: "cors",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              email: email,
+            }),
+          }
         );
         const data = await response.json();
         if (response.status === 200) {
@@ -109,20 +110,21 @@ export default function signup({ userIdCookie }) {
         const regExp = /^\d{2}[A-Za-z]{3}\d{5}$/; // regular expression pattern for nntttnnnnn format
         if (regExp.test(regNumber)) {
             const response = await fetch(
-                `${process.env.NEXT_PUBLIC_API_URL}/user/signup/verify`,
-                {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify({
-                        contactNumber: contactNumber,
-                        otp: otp,
-                        email: email,
-                        regNumber: regNumber.toUpperCase(),
-                        username: username,
-                    }),
-                }
+              `${process.env.NEXT_PUBLIC_API_URL}/user/signup/verify`,
+              {
+                method: "POST",
+                mode: "cors",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                  contactNumber: contactNumber,
+                  otp: otp,
+                  email: email,
+                  regNumber: regNumber.toUpperCase(),
+                  username: username,
+                }),
+              }
             );
             const data = await response.json();
             if (response.status === 200) {

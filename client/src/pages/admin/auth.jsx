@@ -47,17 +47,18 @@ export default function signin({ adminIdCookie }) {
     const handleSubmit = async (event) => {
         event.preventDefault();
         const response = await fetch(
-            `${process.env.NEXT_PUBLIC_API_URL}/admin/auth`,
-            {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    email: email,
-                    password: password,
-                }),
-            }
+          `${process.env.NEXT_PUBLIC_API_URL}/admin/auth`,
+          {
+            method: "POST",
+            mode: "cors",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              email: email,
+              password: password,
+            }),
+          }
         );
         const data = await response.json();
         if (response.status === 200) {
