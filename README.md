@@ -1,3 +1,4 @@
+![Web capture_26-3-2023_153444_nearus vercel app](https://user-images.githubusercontent.com/58517896/227772322-d43a9d33-9335-49b5-9988-b2ab5f23b957.jpeg)
 <h1 align="center"> NearUs</h1>
 <h3 align="center">Live at https://nearus.vercel.app/</h3>
 If you are looking for a convenient and efficient way to plan and host events, you have come to the right place. Our automated event management system lets you create events, manage registrations, and book tickets in a matter of minutes. Whether you are an event organizer or an attendee, you will enjoy the benefits of our system, such as easy access, secure payment, and real-time updates. With our system, event management is no longer a hassle, but a pleasure.
