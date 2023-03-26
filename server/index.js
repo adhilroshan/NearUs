@@ -38,7 +38,13 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use(cookieParser());
-app.use(cors());
+app.use(
+  cors({
+    origin: "https://nearus.vercel.app/",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
 
 app.use("/", paymentRouter);
 app.use("/user", userRouter);
