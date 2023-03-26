@@ -141,19 +141,19 @@ export default function signup({ userIdCookie }) {
     };
 
     return (
-      <div className="m-2">
-        <div className="bg-gradient-to-br from-blue-50 to-blue-200  w-full h-full -z-10 absolute top-0 "></div>
+      <div className="bg-gradient-to-br h-screen pt-10 max-h-fit from-blue-50 to-blue-200 ">
+        {/* <div className="bg-gradient-to-br from-blue-50 to-blue-200  w-full h-full -z-10 absolute top-0 "></div> */}
         {/* back button */}
         <FiArrowLeft
           onClick={() => router.push("/")}
           size={24}
-          className="cursor-pointer m-5"
+          className="absolute top-5 left-5 cursor-pointer m-5"
         />
         {/* Page heading */}
         <div className="text-center text-3xl font-bold">Signup Page</div>
 
         {/* Page Content */}
-        <div className="max-w-3xl mx-auto mt-10">
+        <div className=" max-w-3xl mx-auto mt-10">
           {/* Steps Nav */}
           <div className="flex items-center justify-center">
             {/* Step 1: normal-height:fit; mobile-view: 6rem*/}
@@ -226,7 +226,7 @@ export default function signup({ userIdCookie }) {
           )}
 
           {/* Steps Content */}
-          <div className="bg-white p-5 rounded-lg mt-2">
+          <div className=" bg-white p-5 rounded-lg mt-2 ">
             {
               /* Step 1 Content */
               step === 1 && (
@@ -255,7 +255,7 @@ export default function signup({ userIdCookie }) {
             {
               /* Step 2 Content */
               step === 2 && (
-                <form onSubmit={handleSubmit}>
+                <form  onSubmit={handleSubmit}>
                   {/* EMAIL */}
                   <div>
                     <label className="block mb-2 text-sm font-medium text-gray-700">
@@ -337,7 +337,7 @@ export default function signup({ userIdCookie }) {
                       readOnly
                     />
                   </div>
-                  
+
                   <button
                     type="submit"
                     className="mt-4 bg-[color:var(--darker-secondary-color)] text-white py-2 px-4 rounded hover:bg-[color:var(--secondary-color)]"

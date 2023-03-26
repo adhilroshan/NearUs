@@ -5,7 +5,7 @@ import Header from "@/components/Dev/header";
 
 function Dev() {
   return (
-    <div>
+    <div className="h-screen w-screen bg-gradient-to-br from-blue-100 to-blue-300">
       <Header />
       <Form />
       <Footer />

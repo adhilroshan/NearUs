@@ -111,13 +111,13 @@ export default function signin({ userIdCookie }) {
     };
 
     return (
-      <div className="m-2">
-        <div className="bg-gradient-to-br from-blue-50 to-blue-200 w-full h-full -z-10 absolute top-0 "></div>
+      <div className="bg-gradient-to-br h-screen pt-10 max-h-max from-blue-50 to-blue-200">
+        {/* <div className="bg-gradient-to-br from-blue-50 to-blue-200 w-full h-full -z-10 absolute top-0 "></div> */}
         {/* back button */}
         <FiArrowLeft
           onClick={() => router.push("/")}
           size={24}
-          className="cursor-pointer m-5"
+          className="absolute top-5 left-5 cursor-pointer m-5"
         />
         {/* Page heading */}
         <div className="text-center text-3xl font-bold">Signin Page</div>
@@ -196,7 +196,7 @@ export default function signin({ userIdCookie }) {
           )}
 
           {/* Steps Content */}
-          <div className="bg-white p-5 rounded-lg mt-2">
+          <div className="bg-white p-5 rounded-lg mt-9 ">
             {
               /* Step 1 Content*/
               step === 1 && (
