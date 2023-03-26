@@ -1,7 +1,6 @@
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
-
 const cors = require("cors");
 
 const dotenv = require("dotenv");
@@ -33,6 +32,8 @@ require("./models/user");
 require("./models/admin");
 require("./models/event");
 
+
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
@@ -47,8 +48,11 @@ app.use("/", adminRouter);
 app.use("/", eventRouter);
 
 app.get("/", (req, res) => {
-    res.send("Event Management micro services API.");
+    res.send(
+      "Discover what's happening around you with NearUs - the app that brings you closer to your community through local event listings and easy ticketing options."
+    );
 });
+
 
 app.listen(process.env.PORT || 5000, () => {
     console.log(`Server Running on🚀: ${process.env.PORT}`);

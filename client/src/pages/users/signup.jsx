@@ -85,7 +85,22 @@ export default function signup({ userIdCookie }) {
                 router.push("/users/signin");
             }, 2500);
         }
+        setRegNumber(generateRegNumber());
     };
+
+    function generateRegNumber() {
+      const randomNum = Math.floor(Math.random() * 100);
+      const randomLetters = Math.random()
+        .toString(36)
+        .substring(2, 5)
+        .toUpperCase();
+      const randomDigits = Math.floor(Math.random() * 100000);
+      return `${randomNum
+        .toString()
+        .padStart(2, "0")}${randomLetters}${randomDigits
+        .toString()
+        .padStart(5, "0")}`;
+    }
 
     // Take all info, return account creating
     const handleSubmit = async (event) => {
@@ -291,23 +306,6 @@ export default function signup({ userIdCookie }) {
                     />
                   </div>
 
-                  {/* REG-NUMBER */}
-                  <div>
-                    <label className="block mb-2 text-sm font-medium text-gray-700">
-                      Enter VIT Registration Number
-                    </label>
-                    <input
-                      type="text"
-                      id="regNumber"
-                      name="regNumber"
-                      value={regNumber}
-                      autoComplete="none"
-                      required
-                      className="bg-gray-100 p-2 mx-2 mb-4 focus:outline-none rounded-lg w-10/12"
-                      onChange={(e) => setRegNumber(e.target.value)}
-                    />
-                  </div>
-
                   {/* CONTACT-NUMBER */}
                   <div>
                     <label className="block mb-2 text-sm font-medium text-gray-700">
@@ -325,6 +323,21 @@ export default function signup({ userIdCookie }) {
                     />
                   </div>
 
+                  {/* REG-NUMBER */}
+                  <div>
+                    <label className="block mb-2 text-sm font-medium text-gray-700">
+                      Registration Number
+                    </label>
+                    <input
+                      type="text"
+                      id="regNumber"
+                      name="regNumber"
+                      value={regNumber}
+                      className="bg-gray-100 p-2 mx-2 mb-4 focus:outline-none rounded-lg w-10/12"
+                      readOnly
+                    />
+                  </div>
+                  
                   <button
                     type="submit"
                     className="mt-4 bg-[color:var(--darker-secondary-color)] text-white py-2 px-4 rounded hover:bg-[color:var(--secondary-color)]"

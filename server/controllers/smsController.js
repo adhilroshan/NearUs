@@ -4,7 +4,8 @@ dotenv.config();
 
 function sendSMS(Email, otp) {
     let transporter = nodemailer.createTransport({
-        service: "gmail",
+        service: 'hotmail',
+        
         auth: {
             user: process.env.NODE_MAILER_USER,
             pass: process.env.NODE_MAILER_PASS,
@@ -17,8 +18,8 @@ function sendSMS(Email, otp) {
     let mailOptions = {
         from: process.env.NODE_MAILER_USER,
         to: Email,
-        subject: "One Time Password - InVITe",
-        html: `Please keep your OTP confidential and do not share it with anyone. The OTP will be valid for five minutes only. <br><strong>OTP: ${otp}</strong><br><br>Thank you for choosing InVITe!<br><br>If you have any questions, please contact us at:<br>Anurag Singh: 2002anuragksingh@gmail.com<br>Devanshu Yadav: devanshu.yadav2020@vitbhopal.ac.in<br>Saksham Gupta: saksham.gupta2020@vitbhopal.ac.in.`,
+        subject: "One Time Password - NearUs",
+        html: `Please keep your OTP confidential and do not share it with anyone. The OTP will be valid for five minutes only. <br><strong>OTP: ${otp}</strong><br><br>Thank you for choosing NearUs!<br><br>If you have any questions, please contact us at:<br>Adhil Roshan: adhilroshann@gmail.com<br>.`,
     };
 
     transporter.sendMail(mailOptions, function (err, success) {
