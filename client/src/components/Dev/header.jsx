@@ -1,8 +1,7 @@
-import "../../styles/dev.css";
 
 function Header() {
     return (
-        <div className="head">
+        <div className="">
             <h1>Generate Admin Credential- NearUs</h1>
             <center>
                 <p>

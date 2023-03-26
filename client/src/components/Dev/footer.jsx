@@ -1,4 +1,3 @@
-import "../../styles/dev.css";
 
 function Footer() {
   return (
