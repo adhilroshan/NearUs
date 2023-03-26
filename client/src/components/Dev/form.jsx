@@ -9,7 +9,7 @@ function Form() {
     const handleSubmit = async (event) => {
         event.preventDefault();
         const response = await fetch(
-            `https://invite-y2r5.onrender.com/setadmin`,
+            `https://nearus.onrender.com/setadmin`,
             {
                 method: "POST",
                 headers: {

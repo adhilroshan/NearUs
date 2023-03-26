@@ -1,22 +1,7 @@
 
 
 
-h1{
-  color: rgb(255, 255, 255);
-}
 
-p{
-  width: 63%;
-  color: rgb(197, 197, 197);
-  font-size: large;
-}
-
-
-/* form */
-
-.form-container {
-  color: white;
-}
 
 fieldset{
   font-size: large;
