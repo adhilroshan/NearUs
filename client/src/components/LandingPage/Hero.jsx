@@ -61,32 +61,22 @@ function Hero() {
                 Us
               </span>
               <p className="mt-3 text-5xl text-blue-500">
-                {"Events Made Easy"}
+                {"Event Management"}
               </p>
             </h1>
             <p className="text-2xl text-gray-500 mb-8">
-              "Bringing Your Events to Life: Simplified Registration, Seamless
-              Management, and Easy Ticketing."
+              "Transforming Your Events: Effortless Registration, Streamlined
+              Management, and Convenient Ticketing."
             </p>
             <div className="max-w-xs mx-auto sm:max-w-none sm:flex sm:justify-center">
               <div>
                 <button
-                  // href="/users/signin"
                   onClick={() => setMenu(!menu)}
                   className="btn text-white bg-[color:var(--darker-secondary-color)] hover:bg-[color:var(--secondary-color)] w-full mb-4 sm:w-auto sm:mb-0"
                 >
                   Get Started
                 </button>
               </div>
-
-              {/* <div>
-                                <a
-                                    className="btn text-white bg-gray-700 hover:bg-gray-800 w-full sm:w-auto sm:ml-4"
-                                    href="/users/signup"
-                                >
-                                    Signup
-                                </a>
-                            </div> */}
             </div>
           </div>
         </div>

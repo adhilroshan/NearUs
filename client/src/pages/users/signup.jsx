@@ -127,6 +127,7 @@ export default function signup({ userIdCookie }) {
 
     return (
       <div className="m-2">
+        <div className="bg-gradient-to-br from-blue-50 to-blue-200  w-full h-full -z-10 absolute top-0 "></div>
         {/* back button */}
         <FiArrowLeft
           onClick={() => router.push("/")}
