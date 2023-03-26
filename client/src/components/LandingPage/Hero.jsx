@@ -27,7 +27,7 @@ function Hero() {
                 Registration
               </span>
             </h1>
-            <div className="flex ">
+            <div className="flex flex-col md:flex-row">
               <a
                 href="/users/signin"
                 className="btn text-white bg-[color:var(--darker-secondary-color)] hover:bg-[color:var(--secondary-color)] w-full mb-4 sm:w-auto sm:mb-0"
