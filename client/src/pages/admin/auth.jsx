@@ -50,7 +50,6 @@ export default function signin({ adminIdCookie }) {
           `${process.env.NEXT_PUBLIC_API_URL}/admin/auth`,
           {
             method: "POST",
-            mode: "cors",
             headers: {
               "Content-Type": "application/json",
             },

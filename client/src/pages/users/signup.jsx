@@ -55,7 +55,6 @@ export default function signup({ userIdCookie }) {
           `${process.env.NEXT_PUBLIC_API_URL}/user/signup`,
           {
             method: "POST",
-            mode: "cors",
             headers: {
               "Content-Type": "application/json",
             },
@@ -113,7 +112,6 @@ export default function signup({ userIdCookie }) {
               `${process.env.NEXT_PUBLIC_API_URL}/user/signup/verify`,
               {
                 method: "POST",
-                mode: "cors",
                 headers: {
                   "Content-Type": "application/json",
                 },

@@ -50,7 +50,6 @@ export default function signin({ userIdCookie }) {
           `${process.env.NEXT_PUBLIC_API_URL}/user/signin`,
           {
             method: "POST",
-            mode: "cors",
             headers: {
               "Content-Type": "application/json",
             },
@@ -89,7 +88,6 @@ export default function signin({ userIdCookie }) {
           `${process.env.NEXT_PUBLIC_API_URL}/user/signin/verify`,
           {
             method: "POST",
-            mode: "cors",
             headers: {
               "Content-Type": "application/json",
             },
