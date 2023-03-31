@@ -40,7 +40,7 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(
   cors({
-    origin: "https://nearus.vercel.app, https://localhost:3000",
+    origin: "https://nearus.vercel.app/",
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
   })
@@ -48,7 +48,7 @@ app.use(
 app.use(function (req, res, next) {
   res.header(
     "Access-Control-Allow-Origin",
-    "https://nearus.vercel.app, https://localhost:3000"
+    "https://localhost:3000"
   );
   res.header(
     "Access-Control-Allow-Headers",
