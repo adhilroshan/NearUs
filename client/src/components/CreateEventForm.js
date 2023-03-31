@@ -1,4 +1,5 @@
 import { getAdminToken } from "@/utils/getAdminToken";
+import axios from "axios";
 import { useRouter } from "next/router";
 import { useState } from "react";
 
@@ -19,57 +20,56 @@ const CreateEvent = () => {
 
     // function to handle the event form submission
     const handleEventFormSubmit = async (e) => {
-        e.preventDefault();
+      e.preventDefault();
 
-        // Format date and time for server request
-        const datetemp = new Date(formData.datetime);
-        const formattedDate = datetemp.toLocaleDateString("en-IN", {
-            year: "numeric",
-            month: "2-digit",
-            day: "2-digit",
-        });
-        const formattedTime = datetemp.toLocaleTimeString("en-US", {
-            hour: "numeric",
-            minute: "numeric",
-            hour12: true,
-        });
-        const date = `${formattedDate}`;
-        const time = `${formattedTime}`;
+      // Format date and time for server request
+      const datetemp = new Date(formData.datetime);
+      const formattedDate = datetemp.toLocaleDateString("en-IN", {
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+      });
+      const formattedTime = datetemp.toLocaleTimeString("en-US", {
+        hour: "numeric",
+        minute: "numeric",
+        hour12: true,
+      });
+      const date = `${formattedDate}`;
+      const time = `${formattedTime}`;
 
-        // Set up request body with form data and admin ID
-        const requestBody = {
-            name: formData.name,
-            venue: formData.venue,
-            organizer: formData.organizer,
-            date: date,
-            time: time,
-            description: formData.description,
-            price: formData.price,
-            profile: formData.profile != "" ? formData.profile : undefined,
-            cover: formData.cover != "" ? formData.cover : undefined,
-            admin_id: admin_id,
-        };
+      // Set up request body with form data and admin ID
+      const requestBody = {
+        name: formData.name,
+        venue: formData.venue,
+        organizer: formData.organizer,
+        date: date,
+        time: time,
+        description: formData.description,
+        price: formData.price,
+        profile: formData.profile !== "" ? formData.profile : undefined,
+        cover: formData.cover !== "" ? formData.cover : undefined,
+        admin_id: admin_id,
+      };
 
+      try {
         // Send POST request to server with request body
-        const response = await fetch(
-            `${process.env.NEXT_PUBLIC_API_URL}/post/event`,
-            {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(requestBody),
-            }
+        const response = await axios.post(
+          `${process.env.NEXT_PUBLIC_API_URL}/post/event`,
+          requestBody,
+          { headers: { "Content-Type": "application/json" } }
         );
-        const data = await response.json();
+        const data = response.data;
         if (response.status === 200) {
-            // If request was successful, show success message and redirect to dashboard
-            alert("Event Created Successfully");
-            router.push("/admin/dashboard");
+          // If request was successful, show success message and redirect to dashboard
+          alert("Event Created Successfully");
+          router.push("/admin/dashboard");
         } else {
-            // If request failed, log error message to console
-            console.error(`Failed with status code ${response.status}`);
+          // If request failed, log error message to console
+          console.error(`Failed with status code ${response.status}`);
         }
+      } catch (error) {
+        console.error(error);
+      }
     };
 
     const handleChange = (e) => {

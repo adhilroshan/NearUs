@@ -2,6 +2,7 @@ import Dashboard_Filter from "@/components/Dashboard_Filter";
 import Popup_Filter from "@/components/Popup_Filter";
 import UserNavBar from "@/components/UserNavBar";
 import { getUserToken } from "@/utils/getUserToken";
+import axios from "axios";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
@@ -17,29 +18,25 @@ function UserDashboard() {
     const [pastEvents, setPastEvents] = useState([]);
 
     const fetchAllEvents = async () => {
-        const response = await fetch(
+    try {
+        const response = await axios.post(
             `${process.env.NEXT_PUBLIC_API_URL}/user/details`,
             {
-                method: "POST",
+                user_token: userIdCookie,
+            },
+            {
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify({
-                    user_token: userIdCookie,
-                }),
             }
         );
-        if (!response.ok) {
-            throw new Error(`${response.status} ${response.statusText}`);
-        }
-        try {
-            const data = await response.json();
-            // console.log(data.registeredEvents);
-            setPastEvents(data.registeredEvents);
-        } catch (error) {
-            console.error("Invalid JSON string:", error.message);
-        }
-    };
+        const data = response.data;
+        setPastEvents(data.registeredEvents);
+    } catch (error) {
+        console.error("Error fetching events:", error.message);
+    }
+};
+
 
     useEffect(() => {
         fetchAllEvents();

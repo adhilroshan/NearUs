@@ -2,6 +2,7 @@ import AdminNavBar from "@/components/AdminNavBar";
 import Dashboard_Filter from "@/components/Dashboard_Filter";
 import Popup_Filter from "@/components/Popup_Filter";
 import { getAdminToken } from "@/utils/getAdminToken";
+import axios from "axios";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
@@ -24,29 +25,29 @@ function UserDashboard() {
     const [originalEvents, setOriginalEvents] = useState([]);
 
     const fetchAllEvents = async () => {
-        const response = await fetch(
-            `${process.env.NEXT_PUBLIC_API_URL}/admin/details`,
-            {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    admin_id: adminIdCookie,
-                }),
-            }
+      try {
+        const response = await axios.post(
+          `${process.env.NEXT_PUBLIC_API_URL}/admin/details`,
+          {
+            admin_id: adminIdCookie,
+          },
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
         );
-        if (!response.ok)
-            throw new Error(`${response.status} ${response.statusText}`);
+
+        if (response.status !== 200) {
+          throw new Error(`${response.status} ${response.statusText}`);
+        }
 
         // Admin Details fetched from API `/admin/details`
-        try {
-            const data = await response.json();
-            setAllEvents(data.eventCreated);
-            setOriginalEvents(data.eventCreated);
-        } catch (error) {
-            console.error("Invalid JSON string:", error.message);
-        }
+        setAllEvents(response.data.eventCreated);
+        setOriginalEvents(response.data.eventCreated);
+      } catch (error) {
+        console.error(error.message);
+      }
     };
 
     useEffect(() => {

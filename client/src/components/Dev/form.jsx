@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useState } from "react";
 
 function Form() {
@@ -7,30 +8,30 @@ function Form() {
     const [message, setMessage] = useState("");
 
     const handleSubmit = async (event) => {
-        event.preventDefault();
-        const response = await fetch(
-            `https://nearus.onrender.com/setadmin`,
-            {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    name: name,
-                    email: email,
-                    password: password,
-                }),
-            }
+      event.preventDefault();
+      try {
+        const response = await axios.post(
+          `https://nearus.onrender.com/setadmin`,
+          {
+            name: name,
+            email: email,
+            password: password,
+          },
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
         );
-
-        const data = await response.json();
         if (response.status === 200) {
-            console.log(data);
-            setMessage("* Status:  New admin credentials added!");
-        } else {
-            console.error(`Failed with status code ${response.status}`);
+          console.log(response.data);
+          setMessage("* Status: New admin credentials added!");
         }
+      } catch (error) {
+        console.error(`Failed with status code ${error.response.status}`);
+      }
     };
+
 
     return (
         <div className="form-container">
