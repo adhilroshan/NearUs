@@ -40,7 +40,7 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(
   cors({
-    origin: "https://localhost:3000",
+    origin: "https://localhost:3000/*",
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
   })
@@ -48,7 +48,7 @@ app.use(
 app.use(function (req, res, next) {
   res.header(
     "Access-Control-Allow-Origin",
-    "https://localhost:3000"
+    "https://localhost:3000/*"
   );
   res.header(
     "Access-Control-Allow-Headers",
